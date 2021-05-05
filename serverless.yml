@@ -22,34 +22,46 @@ provider:
       Resource: arn:aws:dynamodb:us-east-1:529198180535:table/stefanini
 
 
-
-
 functions:
   getEmployee:
-    handler: handlers/employee.getEmployee
+    handler: handlers/employee-handler.getEmployee
     events:
       - http: 
-          path: funcionario
+          path: funcionario/{employeeId}
           method: GET
           cors: true
   updateEmployee:
-    handler: handlers/employee.updateEmployee
+    handler: handlers/employee-handler.updateEmployee
     events:
       - http: 
-          path: funcionario
+          path: funcionario/{employeeId}
           method: PUT
           cors: true
-  deleteEmployee:
-    handler: handlers/employee.deleteEmployee
+  patchEmployee:
+    handler: handlers/employee-handler.patchEmployee
     events:
       - http: 
-          path: funcionario
+          path: funcionario/{employeeId}
+          method: PATCH
+          cors: true
+  deleteEmployee:
+    handler: handlers/employee-handler.deleteEmployee
+    events:
+      - http: 
+          path: funcionario/{employeeId}
           method: DELETE
           cors: true
   insertEmployee:
-    handler: handlers/employee.insertEmployee
+    handler: handlers/employee-handler.insertEmployee
     events:
       - http: 
           path: funcionario
           method: POST
+          cors: true
+  getAllEmployees:
+    handler: handlers/employee-handler.getAllEmployees
+    events:
+      - http: 
+          path: funcionario
+          method: GET
           cors: true

@@ -8,5 +8,10 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.900.0",
+    "bluebird": "^3.7.2",
+    "uuid": "^8.3.2"
+  }
 }

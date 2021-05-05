@@ -77,10 +77,15 @@ const HTTP_SUCCESS = {
     SuccessResetContent: 205
 }
 
+const DYNAMO_DB_CONFIGS = {
+    TableName: "stefanini"
+}
+
 module.exports = {
     HTTP_CLIENT_ERRORS,
     HTTP_INFO,
     HTTP_REDIRECT,
     HTTP_SERVER_ERRORS,
-    HTTP_SUCCESS
+    HTTP_SUCCESS,
+    DYNAMO_DB_CONFIGS
 }
