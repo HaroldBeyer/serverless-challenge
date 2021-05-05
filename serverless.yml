@@ -38,6 +38,39 @@ custom:
                   type: string
                 input:
                   type: object
+      -
+        name: "Employee"
+        description: "A employee model"
+        contentType: "application/json"
+        schema:
+          type: object
+          properties:
+            employeeId:
+              type: string
+            age:
+              type: number
+            name:
+              type: string
+            position:
+              type: string
+      -
+        name: "EmployeeAge"
+        description: "A employee's age"
+        contentType: "application/json"
+        schema:
+          type: number
+      -
+        name: "EmployeeName"
+        description: "A employee's name"
+        contentType: "application/json"
+        schema:
+          type: string
+      -
+        name: "EmployeePosition"
+        description: "A employee's position"
+        contentType: "application/json"
+        schema:
+          type: string
 
 
 provider:
@@ -62,7 +95,7 @@ functions:
     handler: handlers/employee-handler.getEmployee
     events:
       - http: 
-          path: funcionario/{employeeId}
+          path: employee/{employeeId}
           method: GET
           cors: true
           documentation:
@@ -74,6 +107,7 @@ functions:
               -
                 name: employeeId
                 description: "Employee's id"
+                required: true
             methodResponses:
               -
                 statusCode: 200
@@ -83,7 +117,7 @@ functions:
     handler: handlers/employee-handler.updateEmployee
     events:
       - http: 
-          path: funcionario/{employeeId}
+          path: employee/{employeeId}
           method: PUT
           cors: true
           documentation:
@@ -95,6 +129,20 @@ functions:
               -
                 name: employeeId
                 description: "Employee's id"
+                required: true
+            queryParams:
+              -
+                name: "age"
+                description: "age of the employee"
+                required: true
+              -
+                name: "name"
+                description: "name of the employee"
+                required: true
+              -
+                name: "position"
+                description: "position of the employee"
+                required: true
             requestBody:
               -
                 description: "All properties of the employee (age:number, name: string and position: string)"
@@ -107,7 +155,7 @@ functions:
     handler: handlers/employee-handler.patchEmployee
     events:
       - http: 
-          path: funcionario/{employeeId}
+          path: employee/{employeeId}
           method: PATCH
           cors: true
           documentation:
@@ -119,6 +167,20 @@ functions:
               -
                 name: employeeId
                 description: "Employee's id"
+                required: true
+            queryParams:
+              -
+                name: "age"
+                description: "age of the employee"
+                required: false
+              -
+                name: "name"
+                description: "name of the employee"
+                required: false
+              -
+                name: "position"
+                description: "position of the employee"
+                required: false
             requestBody:
               -
                 description: "Any propertie(s) of the employee (age:number, name: string and position: string)"
@@ -131,7 +193,7 @@ functions:
     handler: handlers/employee-handler.deleteEmployee
     events:
       - http: 
-          path: funcionario/{employeeId}
+          path: employee/{employeeId}
           method: DELETE
           cors: true
           documentation:
@@ -143,6 +205,7 @@ functions:
               -
                 name: employeeId
                 description: "Employee's id"
+                required: true
             methodResponses:
               -
                 statusCode: 200
@@ -152,7 +215,7 @@ functions:
     handler: handlers/employee-handler.insertEmployee
     events:
       - http: 
-          path: funcionario
+          path: employee
           method: POST
           cors: true
           documentation:
@@ -160,9 +223,24 @@ functions:
             description: "Inserts a employee"
             tags: 
               - "Data creation"
+            requestModels:
+              "application/json": 
             requestBody:
               -
                 description: "All properties of the employee (age:number, name: string and position: string)"
+            queryParams:
+              -
+                name: "age"
+                description: "age of the employee"
+                required: true
+              -
+                name: "name"
+                description: "name of the employee"
+                required: true
+              -
+                name: "position"
+                description: "position of the employee"
+                required: true
             methodResponses:
               -
                 statusCode: 200
@@ -172,7 +250,7 @@ functions:
     handler: handlers/employee-handler.getAllEmployees
     events:
       - http: 
-          path: funcionario
+          path: employee
           method: GET
           cors: true
           documentation:
