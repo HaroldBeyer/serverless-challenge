@@ -27,41 +27,41 @@ functions:
     handler: handlers/employee-handler.getEmployee
     events:
       - http: 
-          path: funcionario/{employeeId}
+          path: employee/{employeeId}
           method: GET
           cors: true
   updateEmployee:
     handler: handlers/employee-handler.updateEmployee
     events:
       - http: 
-          path: funcionario/{employeeId}
+          path: employee/{employeeId}
           method: PUT
           cors: true
   patchEmployee:
     handler: handlers/employee-handler.patchEmployee
     events:
       - http: 
-          path: funcionario/{employeeId}
+          path: employee/{employeeId}
           method: PATCH
           cors: true
   deleteEmployee:
     handler: handlers/employee-handler.deleteEmployee
     events:
       - http: 
-          path: funcionario/{employeeId}
+          path: employee/{employeeId}
           method: DELETE
           cors: true
   insertEmployee:
     handler: handlers/employee-handler.insertEmployee
     events:
       - http: 
-          path: funcionario
+          path: employee
           method: POST
           cors: true
   getAllEmployees:
     handler: handlers/employee-handler.getAllEmployees
     events:
       - http: 
-          path: funcionario
+          path: employee
           method: GET
           cors: true

@@ -1,0 +1,193 @@
+swagger: '2.0'
+info:
+  description: This is an Serverless Api made with the Serverless Framework
+  version: '1.0.0'
+  title: dev-stefanini
+  contact:
+    name: Haroldo Beyer
+    url: 'https://www.linkedin.com/in/haroldo-bacellar-43929512b/'
+    email: haroldobeyerbacellar@gmail.com
+host: hms8y6n32d.execute-api.us-east-1.amazonaws.com
+basePath: /dev
+schemes:
+  - https
+paths:
+  /employee:
+    get:
+      tags:
+        - Data retrieval
+      summary: Get all employees
+      description: Gets all employees in the database
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 200 response
+          schema:
+            $ref: '#/definitions/HttpResponse'
+    post:
+      tags:
+        - Data creation
+      summary: Insert a employee
+      description: Inserts a employee
+      produces:
+        - application/json
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Dados para Autenticação."
+        required: true
+        schema:
+          $ref: "#/definitions/EmployeeInsert"
+      responses:
+        '200':
+          description: 200 response
+          schema:
+            $ref: '#/definitions/HttpResponse'
+  /employee/{employeeId}:
+    get:
+      tags:
+        - Data retrieval
+      summary: Get a single employee
+      description: Gets a single employee based on employeeId
+      produces:
+        - application/json
+      parameters:
+        - name: employeeId
+          in: path
+          description: Employee's id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 200 response
+          schema:
+            $ref: '#/definitions/HttpResponse'
+    put:
+      tags:
+        - Data update
+      summary: Updates a employee
+      description: Updates a employee (all properties) based on employeeId
+      produces:
+        - application/json
+      parameters:
+        - name: employeeId
+          in: path
+          description: Employee's id
+          required: true
+          type: string
+        - in: "body"
+          name: "body"
+          description: "Dados para Autenticação."
+          required: true
+          schema:
+            $ref: "#/definitions/EmployeeInsert"
+      responses:
+        '200':
+          description: 200 response
+          schema:
+            $ref: '#/definitions/HttpResponse'
+    delete:
+      tags:
+        - Data removal
+      summary: Deletes a single employee
+      description: Deletes a single employee based on employeeId
+      produces:
+        - application/json
+      parameters:
+        - name: employeeId
+          in: path
+          description: Employee's id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: 200 response
+          schema:
+            $ref: '#/definitions/HttpResponse'
+    options:
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: 200 response
+          headers:
+            Access-Control-Allow-Origin:
+              type: string
+            Access-Control-Allow-Methods:
+              type: string
+            Access-Control-Allow-Headers:
+              type: string
+    patch:
+      tags:
+        - Data update
+      summary: Patch a employee
+      description: Patches a employee (optional properties) based on employeeId
+      produces:
+        - application/json
+      parameters:
+        - name: employeeId
+          in: path
+          description: Employee's id
+          required: true
+          type: string
+        - in: "body"
+          name: "age"
+          description: "Employee's age."
+          required: false
+          schema:
+            $ref: "#/definitions/EmployeeAge"
+        - in: "body"
+          name: "name"
+          description: "Employee's name."
+          required: false
+          schema:
+            $ref: "#/definitions/EmployeeName"
+        - in: "body"
+          name: "position"
+          description: "Employee's position."
+          required: false
+          schema:
+            $ref: "#/definitions/EmployeePosition"
+      responses:
+        '200':
+          description: 200 response
+          schema:
+            $ref: '#/definitions/HttpResponse'
+definitions:
+  HttpResponse:
+    type: object
+    properties:
+      headers:
+        type: object
+        properties: {}
+      body:
+        type: object
+        properties:
+          input:
+            type: object
+            properties: {}
+          message:
+            type: string
+      statusCode:
+        type: number
+    description: Http response for successful 
+  EmployeeInsert:
+    type: object
+    properties:
+      age:
+        type: number
+      name:
+        type: string
+      position:
+        type: string
+  EmployeeAge:
+    type: number
+  EmployeeName:
+    type: string
+  EmployeePosition:
+    type: string
+    
+    

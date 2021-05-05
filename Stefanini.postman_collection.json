@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "577f8e46-0fb0-40c1-b6d6-5db8b596d4f1",
+		"name": "Stefanini",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetEmployees",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}employee",
+					"host": [
+						"{{base_url}}employee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get one employee",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}employee/b16c9560-ad7e-11eb-a284-8f241d758e26",
+					"host": [
+						"{{base_url}}employee"
+					],
+					"path": [
+						"b16c9560-ad7e-11eb-a284-8f241d758e26"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert one employee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"age\": 90,\n    \"name\": \"old man\",\n    \"position\": \"police officer\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}employee",
+					"host": [
+						"{{base_url}}employee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update employee",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"age\": 19,\n\"name\": \"young harold\",\n\"position\" : \"economist\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}employee/7599c540-ad9b-11eb-8a61-81942c865236",
+					"host": [
+						"{{base_url}}employee"
+					],
+					"path": [
+						"7599c540-ad9b-11eb-8a61-81942c865236"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patch employee",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"age\": 18\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}employee/7599c540-ad9b-11eb-8a61-81942c865236",
+					"host": [
+						"{{base_url}}employee"
+					],
+					"path": [
+						"7599c540-ad9b-11eb-8a61-81942c865236"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete employee",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}employee/da18da10-ad9b-11eb-8a61-81942c865236",
+					"host": [
+						"{{base_url}}employee"
+					],
+					"path": [
+						"da18da10-ad9b-11eb-8a61-81942c865236"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": " https://hms8y6n32d.execute-api.us-east-1.amazonaws.com/dev/"
+		}
+	]
+}
