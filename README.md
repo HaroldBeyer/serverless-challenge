@@ -5,6 +5,7 @@
 ### Serverless architecture
 ![My architecture for an AWS Serverless Api](https://i.ibb.co/tLW9LPG/Serverless-Challenge.png)
 
+### Execution
 With this API you can get, create, update and delete an employee from an company. 
 In order to test it, you must first
 1. Import the postman collection into your postman environment
@@ -19,9 +20,12 @@ In order to test it, you must first
 
 PS:  if you want a visual representation of the API methods, please check the Swagger docs as described below.
 
+### Deploy and tests
 In order to deploy, please type the specified command: `sls deploy`
 In order to test the application, please type the specified command: `sls invoke test`
 
+
+### Docs
 - Swagger docs:
 -- [JSON](https://github.com/HaroldBeyer/serverless-challenge/blob/997683b18d459dfc4ffbdf9101eac1fa1a2058bc/swagger.json)
 -- [YAML](https://github.com/HaroldBeyer/serverless-challenge/blob/997683b18d459dfc4ffbdf9101eac1fa1a2058bc/swagger.yaml)
