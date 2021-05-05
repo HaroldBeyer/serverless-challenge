@@ -19,6 +19,9 @@ In order to test it, you must first
 
 PS:  if you want a visual representation of the API methods, please check the Swagger docs as described below.
 
+In order to deploy, please type the specified command: `sls deploy`
+In order to test the application, please type the specified command: `sls invoke test`
+
 - Swagger docs:
 -- [JSON](https://github.com/HaroldBeyer/serverless-challenge/blob/997683b18d459dfc4ffbdf9101eac1fa1a2058bc/swagger.json)
 -- [YAML](https://github.com/HaroldBeyer/serverless-challenge/blob/997683b18d459dfc4ffbdf9101eac1fa1a2058bc/swagger.yaml)
