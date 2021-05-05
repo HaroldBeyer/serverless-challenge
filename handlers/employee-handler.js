@@ -91,7 +91,6 @@ module.exports.updateEmployee = async (event) => {
     const employeeId = event.pathParameters.employeeId;
     const requestBody = JSON.parse(event.body);
     const { name, age, position } = requestBody;
-    console.log(`Name: ${name}, age: ${age}, position: ${position}`);
 
     const params = {
         TableName,
@@ -109,8 +108,6 @@ module.exports.updateEmployee = async (event) => {
         Key: { employeeId },
         ReturnValues: 'UPDATED_NEW'
     };
-
-    console.log(`Params: ${JSON.stringify(params)}`);
 
     const result = await dynamoDb.update(params).promise();
 
@@ -163,8 +160,6 @@ module.exports.patchEmployee = async (event) => {
         Key: { employeeId },
         ReturnValues: 'UPDATED_NEW'
     }
-
-    console.log(`Params: ${JSON.stringify(params)}`);
 
     const result = await dynamoDb.update(params).promise();
 
