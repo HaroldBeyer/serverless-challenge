@@ -5,6 +5,12 @@ org: haroldobeyerbacellar
 
 frameworkVersion: '2'
 
+plugins:
+  - serverless-jest-plugin
+
+custom:
+  jest:
+
 provider:
   name: aws
   runtime: nodejs12.x

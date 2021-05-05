@@ -11,6 +11,8 @@ const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 const TableName = DYNAMO_DB_CONFIGS.TableName;
 
+//TODO => Refactor, create an controller, service, strategies, etc
+
 /**
  * 
  * @param {pathParameters.employeeId} event 

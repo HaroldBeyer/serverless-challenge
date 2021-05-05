@@ -15,6 +15,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "serverless-aws-documentation": "^1.1.0"
+    "serverless-aws-documentation": "^1.1.0",
+    "serverless-jest-plugin": "^0.3.0"
   }
 }
