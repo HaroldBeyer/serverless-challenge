@@ -9,9 +9,47 @@ provider:
   name: aws
   runtime: nodejs12.x
   lambdaHashingVersion: 20201221
+  memorySize: 128
+  iamRoleStatements: 
+    - Effect: Allow
+      Action:
+       - dynamodb:Query
+       - dynamodb:Scan
+       - dynamodb:GetItem
+       - dynamodb:PutItem
+       - dynamodb:UpdateItem
+       - dynamodb:DeleteItem
+      Resource: arn:aws:dynamodb:us-east-1:529198180535:table/stefanini
+
 
 
 
 functions:
-  hello:
-    handler: handler.hello
+  getEmployee:
+    handler: handlers/employee.getEmployee
+    events:
+      - http: 
+          path: funcionario
+          method: GET
+          cors: true
+  updateEmployee:
+    handler: handlers/employee.updateEmployee
+    events:
+      - http: 
+          path: funcionario
+          method: PUT
+          cors: true
+  deleteEmployee:
+    handler: handlers/employee.deleteEmployee
+    events:
+      - http: 
+          path: funcionario
+          method: DELETE
+          cors: true
+  insertEmployee:
+    handler: handlers/employee.insertEmployee
+    events:
+      - http: 
+          path: funcionario
+          method: POST
+          cors: true
