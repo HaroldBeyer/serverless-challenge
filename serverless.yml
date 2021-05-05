@@ -5,74 +5,6 @@ org: haroldobeyerbacellar
 
 frameworkVersion: '2'
 
-plugins:
-  - serverless-aws-documentation
-
-custom:
-  documentation:
-    api:
-      info:
-        version: "1"
-        title: "Serverless Challenge"
-        description: "This is an Serverless Api made with the Serverless Framework"
-        contact:
-          name: "Haroldo Beyer"
-          url: "https://www.linkedin.com/in/haroldo-bacellar-43929512b/"
-          email: "haroldobeyerbacellar@gmail.com"
-    models:
-      -
-        name: "HttpResponse"
-        description: "Http response for successful operations"
-        contentType: "application/json"
-        schema: 
-          type: object
-          properties:
-            statusCode:
-              type: number
-            headers:
-              type: object
-            body:
-              type: object
-              properties:
-                message:
-                  type: string
-                input:
-                  type: object
-      -
-        name: "Employee"
-        description: "A employee model"
-        contentType: "application/json"
-        schema:
-          type: object
-          properties:
-            employeeId:
-              type: string
-            age:
-              type: number
-            name:
-              type: string
-            position:
-              type: string
-      -
-        name: "EmployeeAge"
-        description: "A employee's age"
-        contentType: "application/json"
-        schema:
-          type: number
-      -
-        name: "EmployeeName"
-        description: "A employee's name"
-        contentType: "application/json"
-        schema:
-          type: string
-      -
-        name: "EmployeePosition"
-        description: "A employee's position"
-        contentType: "application/json"
-        schema:
-          type: string
-
-
 provider:
   name: aws
   runtime: nodejs12.x
@@ -98,21 +30,6 @@ functions:
           path: employee/{employeeId}
           method: GET
           cors: true
-          documentation:
-            summary: "Get a single employee"
-            description: "Gets a single employee based on employeeId"
-            tags: 
-              - "Data retrieval"
-            pathParams:
-              -
-                name: employeeId
-                description: "Employee's id"
-                required: true
-            methodResponses:
-              -
-                statusCode: 200
-                responseModels:
-                  "application/json": HttpResponse
   updateEmployee:
     handler: handlers/employee-handler.updateEmployee
     events:
@@ -120,37 +37,6 @@ functions:
           path: employee/{employeeId}
           method: PUT
           cors: true
-          documentation:
-            summary: "Updates a employee"
-            description: "Updates a employee (all properties) based on employeeId"
-            tags: 
-              - "Data update"
-            pathParams:
-              -
-                name: employeeId
-                description: "Employee's id"
-                required: true
-            queryParams:
-              -
-                name: "age"
-                description: "age of the employee"
-                required: true
-              -
-                name: "name"
-                description: "name of the employee"
-                required: true
-              -
-                name: "position"
-                description: "position of the employee"
-                required: true
-            requestBody:
-              -
-                description: "All properties of the employee (age:number, name: string and position: string)"
-            methodResponses:
-              -
-                statusCode: 200
-                responseModels:
-                  "application/json": HttpResponse
   patchEmployee:
     handler: handlers/employee-handler.patchEmployee
     events:
@@ -158,37 +44,6 @@ functions:
           path: employee/{employeeId}
           method: PATCH
           cors: true
-          documentation:
-            summary: "Patch a employee"
-            description: "Patches a employee (optional properties) based on employeeId"
-            tags: 
-              - "Data update"
-            pathParams:
-              -
-                name: employeeId
-                description: "Employee's id"
-                required: true
-            queryParams:
-              -
-                name: "age"
-                description: "age of the employee"
-                required: false
-              -
-                name: "name"
-                description: "name of the employee"
-                required: false
-              -
-                name: "position"
-                description: "position of the employee"
-                required: false
-            requestBody:
-              -
-                description: "Any propertie(s) of the employee (age:number, name: string and position: string)"
-            methodResponses:
-              -
-                statusCode: 200
-                responseModels:
-                  "application/json": HttpResponse
   deleteEmployee:
     handler: handlers/employee-handler.deleteEmployee
     events:
@@ -196,21 +51,6 @@ functions:
           path: employee/{employeeId}
           method: DELETE
           cors: true
-          documentation:
-            summary: "Deletes a single employee"
-            description: "Deletes a single employee based on employeeId"
-            tags: 
-              - "Data removal"
-            pathParams:
-              -
-                name: employeeId
-                description: "Employee's id"
-                required: true
-            methodResponses:
-              -
-                statusCode: 200
-                responseModels:
-                  "application/json": HttpResponse
   insertEmployee:
     handler: handlers/employee-handler.insertEmployee
     events:
@@ -218,34 +58,6 @@ functions:
           path: employee
           method: POST
           cors: true
-          documentation:
-            summary: "Insert a employee"
-            description: "Inserts a employee"
-            tags: 
-              - "Data creation"
-            requestModels:
-              "application/json": 
-            requestBody:
-              -
-                description: "All properties of the employee (age:number, name: string and position: string)"
-            queryParams:
-              -
-                name: "age"
-                description: "age of the employee"
-                required: true
-              -
-                name: "name"
-                description: "name of the employee"
-                required: true
-              -
-                name: "position"
-                description: "position of the employee"
-                required: true
-            methodResponses:
-              -
-                statusCode: 200
-                responseModels:
-                  "application/json": HttpResponse
   getAllEmployees:
     handler: handlers/employee-handler.getAllEmployees
     events:
@@ -253,13 +65,3 @@ functions:
           path: employee
           method: GET
           cors: true
-          documentation:
-            summary: "Get all employees"
-            description: "Gets all employees in the database"
-            tags: 
-              - "Data retrieval"
-            methodResponses:
-              -
-                statusCode: 200
-                responseModels:
-                  "application/json": HttpResponse
